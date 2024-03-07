@@ -1,0 +1,22 @@
+Zach Parker's Solo Project Proposal:
+
+Name: Zach Scott Parker
+
+Stack: React Frontend with a Spring Boot backend , MySQL for database.
+
+Github Repo Link:https://github.com/ZachSParker/WizardsMagicEmporium
+
+Project: Wizard Magic Emporium
+
+Project Description: this app will be an ecommerce site for witches/wizards/magicfolk
+alike, to sell magical items with different properties that they have acquired/stolen
+in the long centuries they've been alive, they are able to list their product , browse
+the marketplace, see their own listings, compete in a gold leaderboard, and make
+offers on an object of magical prominence if they have the gold. the ability to edit
+and delete their own listing will be present as well. I want to make this website
+because it will push me as a developer to grow and using react+spring is a very
+common combination ive seen in the industry/jobs ive been looking at.
+
+MVP:Full Crud,full styling with Bootstrap, Many to Many relationship, CrudRepository and JPQL handling queries, React +Spring handshake, Login and Registration auth w/ Spring
+
+Bonus Features: Leaderboard sorted by highest gold sales total, My listings will show the number of offers made on the logged in users magical objects, Dnd5eapi used to supply the magical item images, account page for the logged in user to check account and withdraw/deposit gold  
