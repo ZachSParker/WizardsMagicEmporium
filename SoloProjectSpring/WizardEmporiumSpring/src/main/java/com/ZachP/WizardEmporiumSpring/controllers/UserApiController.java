@@ -22,20 +22,16 @@ import jakarta.validation.Valid;
 @CrossOrigin(origins ="http://localhost:5173")
 @RequestMapping("/api/auth")
 public class UserApiController {
+	
 	@Autowired
 	UserService userService;
 	@Autowired
 	HttpSession session;
 	
-	@GetMapping("/login")
-	public String regisPage(@ModelAttribute(value="user") User user ,Model model) {
-		model.addAttribute("loginUser", new LoginUser());
-		return "LoginPage.jsp";
-	}
 	@PostMapping("/registration")
 	public String regisProcess(@Valid @ModelAttribute(value="user") User user, BindingResult result,HttpSession session,Model model) {
 		//email checks
-		
+		System.out.print("regisProcess HERE");
 		if (userService.getByEmail(user.getEmail()) != null) {
 			result.rejectValue("email","email", "Email is taken");
 		}
@@ -54,30 +50,30 @@ public class UserApiController {
 		session.setAttribute("loggedInUser", newUser.getId());
 		return "redirect:/auth/login";
 		}
-	@PostMapping("/login")
-	public String loginProcess(@Valid @ModelAttribute(value="loginUser") LoginUser loginUser, BindingResult result,HttpSession session, Model model) {
-		
-		if(result.hasErrors()) {
-			model.addAttribute("user", new User());
-			return "/LoginPage.jsp";
-		}
-		User userFromDb = userService.getByEmail(loginUser.getEmail());
-		if (userFromDb == null) {
-			model.addAttribute("user", new User());
-			result.rejectValue("email","invalid","invalid login");
-			return "/LoginPage.jsp";
-		}
-		if (!BCrypt.checkpw(loginUser.getPassword(), userFromDb.getPassword())){
-			result.rejectValue("email","invalid","invalid login");
-			return "/LoginPage.jsp";
-		}
-		session.setAttribute("loggedInUser", userFromDb.getId());
-		return "redirect:/";
-	}
-	@GetMapping("/logout")
-	public String logout(HttpSession session) {
-		session.invalidate();
-		return "redirect:/auth/login";
-	}
+//	@PostMapping("/login")
+//	public String loginProcess(@Valid @ModelAttribute(value="loginUser") LoginUser loginUser, BindingResult result,HttpSession session, Model model) {
+//		
+//		if(result.hasErrors()) {
+//			model.addAttribute("user", new User());
+//			return "/LoginPage.jsp";
+//		}
+//		User userFromDb = userService.getByEmail(loginUser.getEmail());
+//		if (userFromDb == null) {
+//			model.addAttribute("user", new User());
+//			result.rejectValue("email","invalid","invalid login");
+//			return "/LoginPage.jsp";
+//		}
+//		if (!BCrypt.checkpw(loginUser.getPassword(), userFromDb.getPassword())){
+//			result.rejectValue("email","invalid","invalid login");
+//			return "/LoginPage.jsp";
+//		}
+//		session.setAttribute("loggedInUser", userFromDb.getId());
+//		return "redirect:/";
+//	}
+//	@GetMapping("/logout")
+//	public String logout(HttpSession session) {
+//		session.invalidate();
+//		return "redirect:/auth/login";
+//	}
 	
 }
