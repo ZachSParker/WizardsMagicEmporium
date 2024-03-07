@@ -6,21 +6,21 @@ const RegisterForm = (props) => {
         lastName:"",
         email:"",
         password:"",
-        confirmPassword:""
+        confirmPassword:"",
+        goldCoins:100
     })
     const [errors,setErrors] = useState({})
     const submitHandler = (e) => {
         e.preventDefault();
         axios.post("http://localhost:8080/api/auth/registration",user)
         .then((res) =>{
-            res.json();
-            console.log(res)
-            console.log(res.data.json())
+            console.log(res,"user added successfully")
         })
         .catch((err) => {
             console.log(err);
             setErrors(err.response.data.errors)
         });
+        
     }
         const handleChange = (e) => {
             // if (e.target.name == 'title' && e.target.value.length <= 2) {
