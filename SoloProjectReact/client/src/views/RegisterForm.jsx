@@ -7,7 +7,7 @@ const RegisterForm = (props) => {
         email:"",
         password:"",
         confirmPassword:"",
-        goldCoins:100
+        goldCoins:0
     })
     const [errors,setErrors] = useState({})
     const submitHandler = (e) => {
@@ -54,6 +54,7 @@ const RegisterForm = (props) => {
         <input type="text" value={user.password} name="password" onChange={handleChange} />
         <label htmlFor="confirmPassword">Confirm Password:</label>
         <input type="text" value={user.confirmPassword} name="confirmPassword" onChange={handleChange} />
+        <input type="hidden" name="goldCoins" value={user.goldCoins} onChange={()=> setUser({...user,[e.target.name]:100})} />
         <button>Register</button>
     </form>
 </div>
