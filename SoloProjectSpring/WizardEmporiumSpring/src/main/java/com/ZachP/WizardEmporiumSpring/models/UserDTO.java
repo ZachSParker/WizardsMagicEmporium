@@ -21,19 +21,20 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="users")
-public class User {
+public class UserDTO {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank
-	@Size(min = 3, max = 100)
+	@NotBlank(message = "First Name is required")
+	@Size(min = 3, max = 100,message = "first name must be between 3 and 100 characters")
 	private String firstName;
-	@NotBlank
-	@Size(min = 3, max = 100)
+	@NotBlank(message = "Last Name is required")
+	@Size(min = 3, max = 100,message = "last name must be between 3 and 100 characters")
 	private String lastName;
 
 	@NotBlank(message = "Email is required!")
+	@Size(min=3,max=50,message="email must be between 6 characters and 50 characters")
 	@Email(message = "Please enter a valid email!")
 	private String email;
 
@@ -66,7 +67,7 @@ public class User {
 		this.updatedAt = new Date();
 	}
 
-	public User() {
+	public UserDTO() {
 		
 	}
 
