@@ -32,6 +32,7 @@ public class LoginController {
 	
 	@PostMapping("/register")
 	public ResponseEntity<UserResponseDTO> performRegister(@Valid @RequestBody UserDTO userDTO){
+		System.out.println("hit /api/register! line 35 Login Controller");
 		if (userService.getByEmail(userDTO.getEmail()) != null) {
 			return  ResponseEntity.ok(new UserResponseDTO("Email must not be taken!"));
 		}

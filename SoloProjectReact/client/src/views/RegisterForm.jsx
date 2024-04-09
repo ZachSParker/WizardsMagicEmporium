@@ -38,8 +38,13 @@ const RegisterForm = (props) => {
                 confirmPassword:formData.get('confirmPassword')
             }),
         })
-        .then((response) => response.json())
+        .then((response) =>{
+
+         console.log("first then",data); response.json()
+          })  
+    
         .then((data)=>{
+            console.log("second then",data)
             if(data.fieldErrors){
                 data.fieldErrors.forEach(fieldError=>{
                     if(fieldError.field === 'email'){
