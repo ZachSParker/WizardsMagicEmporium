@@ -4,8 +4,11 @@ import {
   Routes,
   Route} 
   from 'react-router-dom';
+import "bootstrap/dist/css/bootstrap.min.css"
 import './App.css'
+
 import RegisterForm from './views/RegisterForm';
+import LoginForm from './views/LoginForm';
 function App() {
   
 
@@ -14,6 +17,7 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route path="/user/register" element = {<RegisterForm/>}/>
+        <Route path="/user/login" element = {<LoginForm/>}/>
       </Routes>
       </BrowserRouter>
     </>
