@@ -9,6 +9,7 @@ import './App.css'
 
 import RegisterForm from './views/RegisterForm';
 import LoginForm from './views/LoginForm';
+import Home from './views/Home';
 function App() {
   
 
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/user/register" element = {<RegisterForm/>}/>
         <Route path="/user/login" element = {<LoginForm/>}/>
+        <Route path='/dashboard' element ={<Home/>}/>
       </Routes>
       </BrowserRouter>
     </>

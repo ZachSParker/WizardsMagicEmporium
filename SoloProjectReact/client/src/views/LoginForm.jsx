@@ -1,18 +1,22 @@
 import axios from 'axios'
 import {useState,React} from 'react'
+import {useNavigate} from 'react-router-dom'
 import { Container,Form } from 'react-bootstrap'
 const LoginForm = () => {
     const [loginUser,setLoginUser] = useState({
         email:"",
         password:"",
     })
+    const navigate = useNavigate();
     const [errors,setErrors] = useState([{}])
     const submitHandler = (e) => {
         e.preventDefault();
         axios.post("http://localhost:8080/api/auth/login",loginUser)
         .then((res)=>{
             console.log(res.data)
+            navigate("/dashboard")
         })
+        
         .catch((error)=>{
             console.log(error.response.data.fieldErrors)
             setErrors(error.response.data.fieldErrors)
@@ -33,6 +37,7 @@ const LoginForm = () => {
   return (
     <Container>
         <h5 className='text-light'>{errors[0]["message"]}</h5>
+        
         
         <h2 className='text-muted mb-2' style={{fontFamily:'inherit'}}>Login</h2>
         <Form onSubmit={submitHandler} className='border border-warning bg-success border-3 rounded-4 text-warning' style={{height:'40vh',width:'60vh'}}>
